@@ -40,7 +40,13 @@ var server = net.createServer(function(c){
             clients[i].write(chalk.underline.cyan(c.userName +" says:")+"(╯°□°）╯︵ ┻━┻"+ inputAr.join("")+ "\r\n");
             };
           };
-          history.push(chalk.underline.cyan(c.userName +" says:")+"(╯°□°）╯︵ ┻━┻ "+ inputAr.join("")+ "\r\n");
+          history.push(chalk.underline.cyan(c.userName +" says:")+"(╯°□°）╯︵ ┻━┻  "+ inputAr.join(" ")+ "\r\n");
+        } else if (/\/list/ig.test(inputAr[0])) {
+          c.write("These are the users logged on:\r\n");
+          clients.forEach(function(element){
+            c.write(chalk.cyan(element.userName+"\r\n"));
+          })
+
         } else{
           for(var i = 0; i<clients.length; i++){
             if (clients[i] != c) {
