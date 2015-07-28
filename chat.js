@@ -33,9 +33,9 @@ var server = net.createServer(function(c){
         for(var i = 0; i<clients.length; i++){
           if (clients[i] != c) {
             clients[i].write(chalk.underline.cyan(c.userName +" says:")+ input+ "\r\n");
-            history.push(chalk.underline.cyan(c.userName +" says:")+ input+ "\r\n");
           };
         };
+        history.push(chalk.underline.cyan(c.userName +" says:")+ input+ "\r\n");
 
         break;
       }
